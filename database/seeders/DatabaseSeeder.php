@@ -23,16 +23,23 @@ class DatabaseSeeder extends Seeder
 
         DB::table('users')->insert([
             'name' => 'Admin',
-            'email' => 'admin@gmail.com',
+            'email' => 'admin@email.com',
             'password' => Hash::make('12345678'),
             'role' => 'admin',
             'verification' => 'approved',
         ]);
         DB::table('users')->insert([
-            'name' => 'Seller',
-            'email' => 'seller@gmail.com',
+            'name' => 'Canditate',
+            'email' => 'canditate@email.com',
             'password' => Hash::make('12345678'),
-            'role' => 'seller',
+            'role' => 'canditate',
+            'verification' => 'approved',
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Assessor',
+            'email' => 'assessor@email.com',
+            'password' => Hash::make('12345678'),
+            'role' => 'canditate',
             'verification' => 'approved',
         ]);
     }

@@ -11,23 +11,16 @@
                 </path>
             </svg>
         </button>
-        @php
-            $company = DB::table('companies')->first();
-        @endphp
+
         <div class="md:hidden flex justify-center m-auto">
-            <img class="w-48"
-                src="{{ isset($company->logo) ? asset($company->logo) : asset('images/comapnylogo.svg') }}"
-                alt="logo">
-            {{-- <img class="w-48" src="{{ asset('images/comapnylogo.svg') }}" alt="logo"> --}}
+            <img class="w-48" src="{{ asset('images/comapnylogo.svg') }}" alt="logo">
         </div>
     </div>
     <aside id="sidebar-multi-level-sidebar"
         class="fixed  bg-primary text-white top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar">
         <div class="flex  justify-center mt-[30px] pr-4 mb-3">
-            <a href="../"> <img class=" w-48"
-                    src="{{ isset($company->logo) ? asset($company->logo) : asset('images/comapnylogo.svg') }}"
-                    alt="Horeca"></a>
+            <a href="../"> <img class=" w-48" src="{{ asset('images/comapnylogo.svg') }}" alt="Horeca"></a>
         </div>
         <div class="h-full  py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
             <ul class="space-y-2  pl-3 pr-6 font-medium">
@@ -43,14 +36,7 @@
                         <span class="ms-3">@lang('lang.Dashboard')</span>
                     </a>
                 </li>
-                <li>
-                    <a href="../addSite"
-                        class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <i class="fa-solid fa-globe text-[17px]"></i>
 
-                        <span class="flex-1 ms-3 whitespace-nowrap"> @lang('lang.Sites')</span>
-                    </a>
-                </li>
                 @if (session('user_det')['role'] == 'admin')
                     <li>
                         <a href="../users"
@@ -82,88 +68,7 @@
                         </a>
                     </li>
                 @endif
-                <li>
-                    <a href="../chat"
-                        class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
-                            viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 17h6l3 3v-3h2V9h-2M4 4h11v8H9l-3 3v-3H4V4Z" />
-                        </svg>
 
-
-
-                        <span class="flex-1 ms-3 whitespace-nowrap">@lang('lang.Chat')</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="../customer"
-                        class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
-                            viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19 6c0 1.657-3.134 3-7 3S5 7.657 5 6m14 0c0-1.657-3.134-3-7-3S5 4.343 5 6m14 0v6M5 6v6m0 0c0 1.657 3.134 3 7 3s7-1.343 7-3M5 12v6c0 1.657 3.134 3 7 3s7-1.343 7-3v-6" />
-                        </svg>
-
-
-
-
-                        <span class="flex-1 ms-2.5 whitespace-nowrap"> @lang('lang.Customer')</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="../requestInvoice"
-                        class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="14" height="17" fill="none"
-                            viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m16 10 3-3m0 0-3-3m3 3H5v3m3 4-3 3m0 0 3 3m-3-3h14v-3" />
-                        </svg>
-
-
-
-                        <span class="flex-1 ms-2.5 whitespace-nowrap"> @lang('lang.Request_Invoice')</span>
-                    </a>
-                </li>
-                @if (session('user_det')['role'] == 'admin')
-                    <li>
-                        <a href="../transactionVoucher"
-                            class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
-                                viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="M3 15v4m6-6v6m6-4v4m6-6v6M3 11l6-5 6 5 5.5-5.5" />
-                            </svg>
-
-
-
-
-                            <span class="flex-1 ms-2.5 whitespace-nowrap"> @lang('lang.Transaction_Voucher')</span>
-                        </a>
-                    </li>
-                @endif
-                <li>
-                    <a href="../reports"
-                        class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
-                            viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2"
-                                d="m8.032 12 1.984 1.984 4.96-4.96m4.55 5.272.893-.893a1.984 1.984 0 0 0 0-2.806l-.893-.893a1.984 1.984 0 0 1-.581-1.403V7.04a1.984 1.984 0 0 0-1.984-1.984h-1.262a1.983 1.983 0 0 1-1.403-.581l-.893-.893a1.984 1.984 0 0 0-2.806 0l-.893.893a1.984 1.984 0 0 1-1.403.581H7.04A1.984 1.984 0 0 0 5.055 7.04v1.262c0 .527-.209 1.031-.581 1.403l-.893.893a1.984 1.984 0 0 0 0 2.806l.893.893c.372.372.581.876.581 1.403v1.262a1.984 1.984 0 0 0 1.984 1.984h1.262c.527 0 1.031.209 1.403.581l.893.893a1.984 1.984 0 0 0 2.806 0l.893-.893a1.985 1.985 0 0 1 1.403-.581h1.262a1.984 1.984 0 0 0 1.984-1.984V15.7c0-.527.209-1.031.581-1.403Z" />
-                        </svg>
-
-
-
-
-                        <span class="flex-1 ms-2.5 whitespace-nowrap"> @lang('lang.Reports')</span>
-                    </a>
-                </li>
                 <li>
                     <a href="../help"
                         class="mt-3 flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -229,14 +134,6 @@
 <div class="p-4 sm:ml-[240px]  relative sm:z-50 rounded-l-[20px] h-[100vh] overflow-y-auto  bg-white" id="content">
     <nav id="Navbar">
         <div class="flex justify-end items-center gap-5">
-            <div>
-                <a href="../home">
-                    <svg class="w-[30px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="#67748E">
-                        <path
-                            d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z" />
-                    </svg>
-                </a>
-            </div>
             {{-- =============language dropdown======================== --}}
             <button type="button" data-dropdown-toggle="language-dropdown-menu"
                 class="inline-flex items-center font-medium justify-center px-4 py-2 text-sm text-gray-900 dark:text-white rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">

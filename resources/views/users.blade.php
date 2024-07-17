@@ -1,18 +1,6 @@
 @include('layouts.header')
 @include('layouts.nav')
-@php
-    $company = DB::table('companies')->first();
-@endphp
-@if (isset($company->logo))
-    @php
 
-        $img = $company->logo;
-    @endphp
-@else
-    @php
-        $img = 'images/comapnylogo.svg';
-    @endphp
-@endif
 <div class="md:mx-4 mt-12">
 
     <div class="shadow-dark mt-3  rounded-xl pt-8  bg-white">
@@ -45,7 +33,7 @@
                                 <td>{{ $data->id }}</td>
                                 <td>
                                     <div class="rounded-full flex justify-content-center ">
-                                        <img src="{{ isset($data->user_image) ? asset($data->user_image) : asset($img) }}"
+                                        <img src="{{ isset($data->user_image) ? asset($data->user_image) : asset('images/comapnylogo.svg') }}"
                                             class="object-contain rounded-full h-[80px] w-[80px] bg-slate-400"
                                             width="80">
                                     </div>
