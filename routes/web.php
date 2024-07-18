@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\authController;
+use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\userController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,5 +44,13 @@ Route::middleware('custom')->group(function () {
     Route::get('resources', function () {
 
         return view("resources");
+    });
+
+    Route::controller(ResourceController::class)->group(function () {
+        Route::post('/addRecource', 'add')->name('addRecource');
+        Route::get('/resources', 'view')->name('viewResource');
+        Route::get('/delResource/{id}', 'delete')->name("getForUpdateResource");
+        Route::get('/update-customer/{id}', 'get');
+        Route::post('/updateResource/{id}', 'update');
     });
 });

@@ -10,12 +10,12 @@
         <div class="shadow-dark mt-3  rounded-xl pt-8  bg-white">
             <div>
                 <div class="flex justify-end sm:justify-between  items-center px-[20px] mb-3">
-                    <h3 class="text-[20px] text-black hidden sm:block">@lang('lang.Users_List')</h3>
+                    <h3 class="text-[20px] text-black hidden sm:block">Resources List</h3>
                     <div>
 
                         <button data-modal-target="addcustomermodal" data-modal-toggle="addcustomermodal"
                             class="bg-primary cursor-pointer text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+
-                            @lang('lang.Add_User')</button>
+                            Add Resource</button>
                     </div>
                 </div>
                 <div class="overflow-x-auto">
@@ -54,13 +54,13 @@
             @if (isset($user))
                 <form action="../updateUserCar/{{ $user->id }}" method="post" enctype="multipart/form-data">
                 @else
-                    <form id="customerData" method="post" enctype="multipart/form-data">
+                    <form id="resourceData" method="post" enctype="multipart/form-data">
             @endif
             @csrf
             <div class="relative bg-white shadow-dark rounded-lg  dark:bg-gray-700  ">
                 <div class="flex items-center   justify-start  p-5  rounded-t dark:border-gray-600 bg-primary">
                     <h3 class="text-xl font-semibold text-white ">
-                        @lang('lang.Add_User')
+                        Add Resource
                     </h3>
                     <button type="button"
                         class=" absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
@@ -75,44 +75,41 @@
 
                 <div class="grid md:grid-cols-2 gap-6 mx-6 my-6">
                     <div>
-                        <label class="text-[14px] font-normal" for="user_name">@lang('lang.User_Name')</label>
-                        <input type="text" required
-                            class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                            name="name" id="user_name" value="{{ $user->name ?? '' }}" placeholder=" @lang('lang.User_Name_Here')">
+                        <label class="text-[14px] font-normal" for="file">Resource File</label>
+                        <input type="file" required
+                            class="w-full border-[#DEE2E6] border rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                            name="file" id="file" value="{{ $user->name ?? '' }}">
                     </div>
                     <div>
-                        <label class="text-[14px] font-normal" for="user_email">@lang('lang.Email_Address')</label>
-                        <input type="email" required
+                        <label class="text-[14px] font-normal" for="name">Resource Name</label>
+                        <input type="text" required
                             class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                            name="email" id="user_email" placeholder=" @lang('lang.Email_Address_Here')"
-                            value="{{ $user->email ?? '' }}">
+                            name="name" id="name" placeholder="Resource Name Here" value="{{ $user->email ?? '' }}">
                     </div>
 
                 </div>
-                <div class="grid  md:grid-cols-3 gap-6 mx-6 my-6">
+
+                <div class="grid  md:grid-cols-1 gap-6 mx-6 my-6">
 
                     <div>
-                        <label class="text-[14px] font-normal" for="password">@lang('lang.Password')</label>
-                        <input type="password"
-                            class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                            name="password" id="password" placeholder=" @lang('lang.Password_Here')"
-                            {{ isset($user->id) ? '' : 'required' }}>
-                    </div>
-                    <div>
-                        <label class="text-[14px] font-normal" for="confirm_password">@lang('lang.Confirm_Password')</label>
-                        <input type="password" {{ isset($user->id) ? '' : 'required' }}
-                            class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                            name="confirm_password" id="confirm_password" placeholder=" @lang('lang.Confirm_Password_Here')">
-                    </div>
-                    <div>
-                        <label class="text-[14px] font-normal" for="role">@lang('lang.Role')</label>
-                        <select name="role" id="role">
-                            <option value="seller" {{ isset($user->role) && $user->role == 'seller' ? 'selected' : '' }}>
-                                Seller</option>
-                            <option value="manager" {{ isset($user->role) && $user->role == 'manager' ? 'selected' : '' }}>
-                                Manager</option>
+                        <label class="text-[14px] font-normal" for="course">Course</label>
+                        <select name="course" id="course">
+                            <option value="Bacholer"> Bacholer</option>
+                            <option value="Masters">Masters</option>
                         </select>
                     </div>
+
+
+                </div>
+                <div class="grid  md:grid-cols-1 gap-6 mx-6 my-6">
+
+                    <div>
+                        <label class="text-[14px] font-normal" for="description">Resource Description</label>
+                        <textarea name="description" id="description"
+                            class="w-full min-h-20 border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                            placeholder="Resource Description Here"></textarea>
+                    </div>
+
 
                 </div>
 
@@ -147,8 +144,8 @@
 
         </div>
     </div>
-
-
+@endsection
+@section('js')
     @if (isset($user))
         <script>
             $(document).ready(function() {
@@ -158,31 +155,14 @@
         </script>
     @endif
     <script>
-        let fileInput = document.getElementById('user_image');
-        let imageView = document.getElementById('img_view');
-
-        fileInput.addEventListener('change', function() {
-            const file = this.files[0];
-            const reader = new FileReader();
-
-            reader.onload = function() {
-                imageView.src = reader.result;
-            };
-
-            if (file) {
-                reader.readAsDataURL(file);
-            }
-        });
         $(document).ready(function() {
-            $('.delButton').click(function() {
-                var id = $(this).attr('delId');
-                $('#delLink').attr('href', '../delCustomer/' + id);
-            });
+            console.log('helo word')
             // insert data
-            $("#customerData").submit(function(event) {
-                var url = "../registerdata";
+            $("#resourceData").submit(function(event) {
+                var url = "../addRecource";
                 event.preventDefault();
                 var formData = new FormData(this);
+                console.log(url);
                 $.ajax({
                     type: "POST",
                     url: url,
@@ -196,7 +176,8 @@
                         $('#addBtn').attr('disabled', true);
                     },
                     success: function(response) {
-                        window.location.href = '../users';
+                        // console.log(response);
+                        window.location.href = '../resources';
 
 
                     },
