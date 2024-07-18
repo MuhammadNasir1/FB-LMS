@@ -12,16 +12,18 @@
         <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-6  mt-4">
             <div class="card-1 ">
                 <div class="bg-white  border border-secondary rounded-[10px] py-5 px-8">
-                    <div class="flex gap-1 justify-between items-center">
-                        <div>
-                            <p class="text-sm text-[#808191]">SUbimssions</p>
-                            <h2 class="text-2xl font-semibold mt-1">1</h2>
+                    <a href="#">
+                        <div class="flex gap-1 justify-between items-center">
+                            <div>
+                                <p class="text-sm text-[#808191]">SUbimssions</p>
+                                <h2 class="text-2xl font-semibold mt-1">1</h2>
+                            </div>
+                            <div class="h-[80px] w-[80px] rounded-full bg-primary flex justify-center items-center">
+                                <img class="h-[50px] w-[50px]" width="60px" height="60px"
+                                    src="{{ asset('images/icons/total_orders.svg') }}" alt="Orders">
+                            </div>
                         </div>
-                        <div class="h-[80px] w-[80px] rounded-full bg-primary flex justify-center items-center">
-                            <img class="h-[50px] w-[50px]" width="60px" height="60px"
-                                src="{{ asset('images/icons/total_orders.svg') }}" alt="Orders">
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
 
