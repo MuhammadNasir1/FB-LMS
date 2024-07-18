@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\authController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\userController;
@@ -52,5 +53,9 @@ Route::middleware('custom')->group(function () {
         Route::get('/delResource/{id}', 'delete')->name("getForUpdateResource");
         Route::get('/update-customer/{id}', 'get');
         Route::post('/updateResource/{id}', 'update');
+    });
+
+    Route::controller(AssignmentController::class)->group(function () {
+        Route::get('assignment', 'index');
     });
 });
