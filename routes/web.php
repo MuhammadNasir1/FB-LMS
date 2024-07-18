@@ -40,4 +40,8 @@ Route::middleware('custom')->group(function () {
 
         return view("register");
     });
+    Route::get('resources', function () {
+
+        return view("resources");
+    });
 });
