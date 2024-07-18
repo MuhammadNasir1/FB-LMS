@@ -132,7 +132,7 @@
 
                     </div>
                 </div>
-                <div class="grid md:grid-cols-2 gap-6 mx-6 my-6">
+                <div class="grid md:grid-cols-3 gap-6 mx-6 my-6">
                     <div>
                         <label class="text-[14px] font-normal" for="user_name">@lang('lang.User_Name')</label>
                         <input type="text" required
@@ -146,6 +146,13 @@
                             class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                             name="email" id="user_email" placeholder=" @lang('lang.Email_Address_Here')"
                             value="{{ $user->email ?? '' }}">
+                    </div>
+                    <div>
+                        <label class="text-[14px] font-normal" for="course">Course</label>
+                        <select name="course" id="course">
+                            <option value="Bacholer"> Bacholer</option>
+                            <option value="Masters">Masters</option>
+                        </select>
                     </div>
 
                 </div>
@@ -208,8 +215,10 @@
 
         </div>
     </div>
+@endsection
 
 
+@section('js')
     @if (isset($user))
         <script>
             $(document).ready(function() {
