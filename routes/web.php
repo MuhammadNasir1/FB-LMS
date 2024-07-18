@@ -18,10 +18,6 @@ Route::get('/login', function () {
 Route::get('/notifications', function () {
     return view('notification');
 });
-Route::get('/company', function () {
-    return view('company');
-});
-
 
 Route::middleware('custom')->group(function () {
     Route::get('/setting', [authController::class, 'settingdata']);
