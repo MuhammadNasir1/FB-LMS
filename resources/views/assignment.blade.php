@@ -53,7 +53,7 @@
             @if (isset($user))
                 <form action="../updateUserCar/{{ $user->id }}" method="post" enctype="multipart/form-data">
                 @else
-                    <form id="resourceData" method="post" enctype="multipart/form-data">
+                    <form id="assignmentData" method="post" enctype="multipart/form-data">
             @endif
             @csrf
             <div class="relative bg-white shadow-dark rounded-lg  dark:bg-gray-700  ">
@@ -83,7 +83,7 @@
                         <label class="text-[14px] font-normal" for="file">Assignment File</label>
                         <input type="file" required
                             class="w-full border-[#DEE2E6] border rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                            name="file" id="file" value="{{ $user->name ?? '' }}">
+                            name="file" id="file" value="{{ $user->name ?? '' }}" accept=".pdf , .DOCX , .DOC">
                     </div>
 
                 </div>
@@ -144,8 +144,8 @@
         $(document).ready(function() {
             console.log('helo word')
             // insert data
-            $("#resourceData").submit(function(event) {
-                var url = "../addRecource";
+            $("#assignmentData").submit(function(event) {
+                var url = "../addAssignment";
                 event.preventDefault();
                 var formData = new FormData(this);
                 console.log(url);
