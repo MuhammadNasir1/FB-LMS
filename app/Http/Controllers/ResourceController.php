@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ResourceController extends Controller
 {
+    public function index()
+    {
+        $resources = Resource::all();
+        return view("resources", compact('resources'));
+    }
     public function add(Request $request)
     {
         try {
@@ -37,11 +42,7 @@ class ResourceController extends Controller
         }
     }
 
-    public function view()
-    {
-        $data = Resource::all();
-        return view("resources", compact('data'));
-    }
+
 
     public function delete(string $id)
     {

@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('title')
-    Resources
+    Assignment
 @endsection
 
 @section('content')
@@ -10,12 +10,12 @@
         <div class="shadow-dark mt-3  rounded-xl pt-8  bg-white">
             <div>
                 <div class="flex justify-end sm:justify-between  items-center px-[20px] mb-3">
-                    <h3 class="text-[20px] text-black hidden sm:block">Resources List</h3>
+                    <h3 class="text-[20px] text-black hidden sm:block">Course List</h3>
                     <div>
 
-                        <button data-modal-target="addcustomermodal" data-modal-toggle="addcustomermodal"
+                        <button data-modal-target="addCourseModal" data-modal-toggle="addCourseModal"
                             class="bg-primary cursor-pointer text-white h-12 px-5 rounded-[6px]  shadow-sm font-semibold ">+
-                            Add Resource</button>
+                            Add Course</button>
                     </div>
                 </div>
                 <div class="overflow-x-auto">
@@ -24,21 +24,18 @@
                             <tr>
                                 <th class="whitespace-nowrap">STN</th>
                                 <th class="whitespace-nowrap">Name</th>
-                                <th class="whitespace-nowrap">Course</th>
-                                <th class="whitespace-nowrap">Resource File</th>
+                                <th class="whitespace-nowrap">Total Assignment </th>
                                 <th class="whitespace-nowrap">Description</th>
-                                <th class="flex  justify-center">Action</th>
+                                <th class="flex  justify-center">@lang('lang.Action')</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($resources as $resource)
+                            @foreach ($courses as $course)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $resource->name }}</td>
-                                    <td>{{ $resource->course }}</td>
-                                    <td><a href="{{ $resource->file }}" target="_blank" class="text-blue-500">Open File</a>
-                                    </td>
-                                    <td>{{ $resource->description }}</td>
+                                    <td>{{ $course->name }}</td>
+                                    <td>{{ $course->total_assignments }}</td>
+                                    <td>{{ $course->description }}</td>
                                     <td>
                                         <div class="flex gap-4">
                                             <a href="#">
@@ -79,7 +76,7 @@
 
 
     {{-- ============ add  customer modal  =========== --}}
-    <div id="addcustomermodal" data-modal-backdrop="static"
+    <div id="addCourseModal" data-modal-backdrop="static"
         class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden">
         <div class="fixed inset-0 transition-opacity">
             <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
@@ -88,17 +85,17 @@
             @if (isset($user))
                 <form action="../updateUserCar/{{ $user->id }}" method="post" enctype="multipart/form-data">
                 @else
-                    <form id="resourceData" method="post" enctype="multipart/form-data">
+                    <form id="courseData" method="post" enctype="multipart/form-data">
             @endif
             @csrf
             <div class="relative bg-white shadow-dark rounded-lg  dark:bg-gray-700  ">
                 <div class="flex items-center   justify-start  p-5  rounded-t dark:border-gray-600 bg-primary">
                     <h3 class="text-xl font-semibold text-white ">
-                        Add Resource
+                        Add Assignment
                     </h3>
                     <button type="button"
                         class=" absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "
-                        data-modal-hide="addcustomermodal">
+                        data-modal-hide="addCourseModal">
                         <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 14 14">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -109,39 +106,26 @@
 
                 <div class="grid md:grid-cols-2 gap-6 mx-6 my-6">
                     <div>
-                        <label class="text-[14px] font-normal" for="file">Resource File</label>
-                        <input type="file" required
-                            class="w-full border-[#DEE2E6] border rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                            name="file" id="file" value="{{ $user->name ?? '' }}">
-                    </div>
-                    <div>
-                        <label class="text-[14px] font-normal" for="name">Resource Name</label>
+                        <label class="text-[14px] font-normal" for="Course_name">Course Name</label>
                         <input type="text" required
                             class="w-full border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                            name="name" id="name" placeholder="Resource Name Here" value="{{ $user->email ?? '' }}">
+                            name="name" id="course_name" placeholder="Course Name Here" value="">
                     </div>
-
-                </div>
-
-                <div class="grid  md:grid-cols-1 gap-6 mx-6 my-6">
-
                     <div>
-                        <label class="text-[14px] font-normal" for="course">Course</label>
-                        <select name="course" id="course">
-                            <option value="Bacholer"> Bacholer</option>
-                            <option value="Masters">Masters</option>
-                        </select>
+                        <label class="text-[14px] font-normal" for="course_assigment">Course Assignments</label>
+                        <input type="number" required
+                            class="w-full border-[#DEE2E6] border rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
+                            name="total_assignments" id="course_assigment" placeholder="01">
                     </div>
-
 
                 </div>
                 <div class="grid  md:grid-cols-1 gap-6 mx-6 my-6">
 
                     <div>
-                        <label class="text-[14px] font-normal" for="description">Resource Description</label>
+                        <label class="text-[14px] font-normal" for="description">Course Description</label>
                         <textarea name="description" id="description"
                             class="w-full min-h-20 border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
-                            placeholder="Resource Description Here"></textarea>
+                            placeholder="Course Description Here"></textarea>
                     </div>
 
 
@@ -183,17 +167,16 @@
     @if (isset($user))
         <script>
             $(document).ready(function() {
-                $('#addcustomermodal').removeClass("hidden");
+                $('#addCourseModal').removeClass("hidden");
 
             });
         </script>
     @endif
     <script>
         $(document).ready(function() {
-            console.log('helo word')
             // insert data
-            $("#resourceData").submit(function(event) {
-                var url = "../addRecource";
+            $("#courseData").submit(function(event) {
+                var url = "../addCourse";
                 event.preventDefault();
                 var formData = new FormData(this);
                 console.log(url);
@@ -211,7 +194,7 @@
                     },
                     success: function(response) {
                         // console.log(response);
-                        window.location.href = '../resources';
+                        window.location.href = '../course';
 
 
                     },
@@ -230,9 +213,6 @@
                     }
                 });
             });
-
-
-
 
 
         });
