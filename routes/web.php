@@ -56,6 +56,7 @@ Route::middleware('custom')->group(function () {
     });
 
     Route::controller(AssignmentController::class)->group(function () {
+        Route::post('/addAssignment', 'add');
         Route::get('assignment', 'index');
     });
 });

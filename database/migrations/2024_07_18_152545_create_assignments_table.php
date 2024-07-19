@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('assignments', function (Blueprint $table) {
             $table->id();
+            $table->string('user_id');
+            $table->string('name');
+            $table->string('file');
+            $table->string('description');
             $table->timestamps();
         });
     }
