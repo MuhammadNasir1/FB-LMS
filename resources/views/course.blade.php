@@ -81,7 +81,7 @@
         <div class="fixed inset-0 transition-opacity">
             <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
         </div>
-        <div class="relative p-4 w-full   max-w-6xl max-h-full ">
+        <div class="relative p-4 w-full   max-w-2xl max-h-full ">
             @if (isset($user))
                 <form action="../updateUserCar/{{ $user->id }}" method="post" enctype="multipart/form-data">
                 @else
@@ -91,7 +91,7 @@
             <div class="relative bg-white shadow-dark rounded-lg  dark:bg-gray-700  ">
                 <div class="flex items-center   justify-start  p-5  rounded-t dark:border-gray-600 bg-primary">
                     <h3 class="text-xl font-semibold text-white ">
-                        Add Assignment
+                        Add Course
                     </h3>
                     <button type="button"
                         class=" absolute right-2 text-white bg-transparent rounded-lg text-sm w-8 h-8 ms-auto "

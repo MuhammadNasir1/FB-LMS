@@ -47,10 +47,16 @@ Route::middleware('custom')->group(function () {
 
     Route::controller(ResourceController::class)->group(function () {
         Route::post('/addRecource', 'add')->name('addRecource');
-        Route::get('/resources', 'index')->name('viewResource');
+        Route::get('/view/resources', 'index')->name('viewResource');
         Route::get('/delResource/{id}', 'delete')->name("getForUpdateResource");
         Route::get('/update-customer/{id}', 'get');
         Route::post('/updateResource/{id}', 'update');
+        Route::post('/updateResource/{id}', 'update');
+        Route::get('/view/resources', 'index')->name('viewResource');
+
+        Route::get('resources', function () {
+            return view('view_resources');
+        });
     });
 
     Route::controller(AssignmentController::class)->group(function () {
