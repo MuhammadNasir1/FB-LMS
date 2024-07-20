@@ -20,8 +20,8 @@
                     <img class="mt-5 w-[180px]" src="{{ asset('images/comapnylogo.svg') }}" alt="logo">
                 </div> --}}
 
-                <h2 class="font-semibold text-2xl mt-16 text-[#000000]">Log In</h2>
-                <form id="login_data" method="post" class="flex flex-col gap-4 mt-5">
+                <h2 class="font-semibold text-2xl mt-16 text-[#000000]">Login to your ePortfolio</h2>
+                <form id="login_data" method="post" class="flex flex-col gap-4 ">
                     @csrf
                     <div class="relative mt-16 border-b-2 border-black">
                         <label for="email" class="text-sm text-black">Email</label>
@@ -62,9 +62,9 @@
                             Login
                         </div>
                     </button>
-                    <div class=" text-center">
-                        <h2><a href="../" class="text-primary font-bold underline">Forgot Password</a></h2>
-                    </div>
+                    {{-- <div class=" text-right">
+                        <h2><a href="../" class="text-primary  underline">Forgot Password</a></h2>
+                    </div> --}}
                 </form>
             </div>
 
