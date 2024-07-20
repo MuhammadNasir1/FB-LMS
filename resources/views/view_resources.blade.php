@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="p-10">
-        <div class="flex justify-between">
+        <div class="flex justify-between gap-5">
             <div class="w-[200px] pt-3">
                 <select name="course" id="course" class="rounded-[5px] w-[100px] bg-gray border-0 ps-8 focus:border-0">
                     <option value="Bacholer"> Bacholer</option>
