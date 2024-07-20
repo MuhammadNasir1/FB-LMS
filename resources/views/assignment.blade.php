@@ -39,13 +39,14 @@
                                     <td><a href="{{ $assigment->file }}" target="_blank"
                                             class="text-blue-500 underline ">Open File</a></td>
                                     <td><button
-                                            class="px-3 py-1 bg-red-500 rounded-lg text-white font-bold">{{ $assigment->status }}Pending</button>
+                                            class="px-3 py-1 bg-red-500 rounded-lg text-white font-bold">{{ $assigment->status }}</button>
                                     </td>
                                     <td class="max-w-56">{{ $assigment->description }}</td>
                                     <td>
                                         <div class="flex justify-center" data-modal-target="checkAssignmentmodal"
                                             data-modal-toggle="checkAssignmentmodal">
-                                            <button class="bg-blue-900 text-white font-bold  py-3 px-4 rounded-lg ">Review
+                                            <button assignmentId="{{ $assigment->id }}"
+                                                class="bg-blue-900 text-white font-bold  py-3 px-4 rounded-lg reviewBtn ">Review
                                                 Assignment</button>
                                         </div>
                                     </td>
@@ -66,7 +67,7 @@
             <div id="backdrop" class="absolute inset-0 bg-slate-800 opacity-75"></div>
         </div>
         <div class="relative p-4 w-full   max-w-2xl max-h-full ">
-            <form id="CheckassignmentData" method="post" enctype="multipart/form-data">
+            <form id="CheckassignmentForm" method="post" enctype="multipart/form-data" url="">
                 @csrf
                 <div class="relative bg-white shadow-dark rounded-lg  dark:bg-gray-700  ">
                     <div class="flex items-center   justify-start  p-5  rounded-t dark:border-gray-600 bg-primary">
@@ -85,14 +86,14 @@
                     </div>
 
                     <div class=" mx-6 my-6 flex gap-4">
-                        <h2 class="text-sm">Are you agree with this assigment?</h2>
+                        <h2 class="text-sm">Are you agree with this submission?</h2>
                         <div class="flex items-center">
-                            <input id="yes" type="radio" value="" name="status"
+                            <input id="yes" type="radio" value="approve" name="status"
                                 class="w-5 h-5 text-green-700 bg-gray-100 border-gray-300 focus:ring-green-700"> <label
                                 for="yes" class="ms-2 text-sm font-medium text-gray-400 dark:text-gray-500">yes</label>
                         </div>
                         <div class="flex items-center">
-                            <input id="no" type="radio" value="" name="status"
+                            <input id="no" type="radio" value="rejected" name="status"
                                 class="w-5 h-5 text-red-600
                              bg-gray-100 border-gray-300 focus:ring-red-600">
                             <label for="no"
@@ -102,8 +103,8 @@
                     <div class="grid  md:grid-cols-1 gap-6 mx-6 my-6">
 
                         <div>
-                            <label class="text-[14px] font-normal" for="description">Assignment Note</label>
-                            <textarea name="description" id="description" required
+                            <label class="text-[14px] font-normal" for="note">Assignment Note</label>
+                            <textarea name="note" id="note" required
                                 class="w-full min-h-20 border-[#DEE2E6] rounded-[4px] focus:border-primary   h-[40px] text-[14px]"
                                 placeholder="Resource Note Here"></textarea>
                         </div>
@@ -115,8 +116,8 @@
 
                     <div class="flex justify-end ">
                         <button class="bg-primary text-white py-2 px-6 my-4 rounded-[4px]  mx-6 uaddBtn  font-semibold "
-                            id="addBtn">
-                            <div class=" text-center hidden" id="spinner">
+                            id="AaddBtn">
+                            <div class=" text-center hidden" id="Aspinner">
                                 <svg aria-hidden="true"
                                     class="w-5 h-5 mx-auto text-center text-gray-200 animate-spin fill-primary"
                                     viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -128,7 +129,7 @@
                                         fill="currentFill" />
                                 </svg>
                             </div>
-                            <div id="text">
+                            <div id="Atext">
                                 @lang('lang.Save')
                             </div>
 
@@ -243,8 +244,6 @@
     @endif
     <script>
         $(document).ready(function() {
-            console.log('helo word')
-            // insert data
             $("#assignmentData").submit(function(event) {
                 var url = "../addAssignment";
                 event.preventDefault();
@@ -264,7 +263,7 @@
                     },
                     success: function(response) {
                         // console.log(response);
-                        window.location.href = '../resources';
+                        window.location.href = '../assignment';
 
 
                     },
@@ -285,8 +284,51 @@
             });
 
 
+            $('.reviewBtn').click(function() {
+                var id = $(this).attr('assignmentId');
+                console.log(id);
+                url = '../assignmentReview/' + id;
+                $('#CheckassignmentForm').attr('url', url);
+
+            });
+
+            $("#CheckassignmentForm").submit(function(event) {
+                event.preventDefault();
+                var url = $("#CheckassignmentForm").attr('url');
+                var formData = new FormData(this);
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: formData,
+                    dataType: "json",
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function() {
+                        $('#Aspinner').removeClass('hidden');
+                        $('#Atext').addClass('hidden');
+                        $('#AaddBtn').attr('disabled', true);
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        window.location.href = '../assignment';
 
 
+                    },
+                    error: function(jqXHR) {
+                        let response = JSON.parse(jqXHR.responseText);
+                        console.log("error");
+                        Swal.fire(
+                            'Warning!',
+                            response.message,
+                            'warning'
+                        );
+
+                        $('#Atext').removeClass('hidden');
+                        $('#Aspinner').addClass('hidden');
+                        $('#AaddBtn').attr('disabled', false);
+                    }
+                });
+            });
 
         });
     </script>

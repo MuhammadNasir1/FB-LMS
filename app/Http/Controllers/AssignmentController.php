@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Assignment;
+use App\Models\assignmentReview;
 use Illuminate\Http\Request;
 
 class AssignmentController extends Controller
@@ -40,6 +41,26 @@ class AssignmentController extends Controller
             $resource->save();
             return response()->json(['success' => true, 'message' => "Data add successfully"], 201);
             // return redirect("../resources");
+        } catch (\Exception $error) {
+            return response()->json(['success' => false, 'message' => $error->getMessage()], 500);
+        }
+    }
+
+    public function assignmentReview(Request $request, $id)
+    {
+        try {
+
+            $validateData = $request->validate([
+                'name' => 'required',
+                'file' => 'required',
+                'status' => 'nullable',
+                'note' => 'required',
+            ]);
+            $assigment = Assignment::find($id);
+            $assigment->status = "reviewed";
+            $review = new assignmentReview;
+
+            return response()->json(['success' => true, 'message' => "Data add successfully"], 201);
         } catch (\Exception $error) {
             return response()->json(['success' => false, 'message' => $error->getMessage()], 500);
         }

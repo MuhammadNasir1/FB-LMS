@@ -340,7 +340,7 @@
                     success: function(response) {
                         $('#addCourseModal').addClass('hidden');
                         var newSelect = $('<option></option>');
-                        newSelect.val(response.data.name);
+                        newSelect.val(response.data.id);
                         newSelect.text(response.data.name);
                         $('#course').append(newSelect);
 
