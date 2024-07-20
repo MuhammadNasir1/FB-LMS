@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Resource;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,8 @@ class ResourceController extends Controller
     public function index()
     {
         $resources = Resource::all();
-        return view("resources", compact('resources'));
+        $courses = Course::all();
+        return view("resources", compact('resources', 'courses'));
     }
     public function add(Request $request)
     {

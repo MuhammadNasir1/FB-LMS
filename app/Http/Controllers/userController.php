@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
 use  Illuminate\Support\Facades\Hash;
@@ -20,8 +21,9 @@ class userController extends Controller
     // dashboard  Users Couny
     public function users()
     {
+        $courses = Course::all();
         $users =  User::where('role', 'seller')->orWhere('role', 'manager')->get();
-        return view('users', ['users'  => $users]);
+        return view('users', compact('users', 'courses'));
     }
 
     public function  addCustomer(Request $request)

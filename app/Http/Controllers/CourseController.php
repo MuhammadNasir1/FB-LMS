@@ -29,7 +29,7 @@ class CourseController extends Controller
                 'total_assignments' => $validatedData['total_assignments'],
                 'description' => $validatedData['description'],
             ]);
-            return response()->json(['success' => true, 'message' => "Data add successfully"], 200);
+            return response()->json(['success' => true, 'message' => "Data add successfully",  "data" => $course], 200);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 500);
         }
