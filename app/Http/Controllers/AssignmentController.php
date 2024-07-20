@@ -9,7 +9,8 @@ class AssignmentController extends Controller
 {
     public function index()
     {
-        return  view('assignment');
+        $assigments = Assignment::all();
+        return  view('assignment', compact('assigments'));
     }
 
     public function add(Request $request)
@@ -19,6 +20,7 @@ class AssignmentController extends Controller
             $validateData = $request->validate([
                 'name' => 'required',
                 'file' => 'required',
+                'status' => 'required',
                 'description' => 'required',
             ]);
 
@@ -26,6 +28,7 @@ class AssignmentController extends Controller
             $resource->user_id = session('user_det')['user_id'];
             $resource->name = $validateData['name'];
             $resource->description = $validateData['description'];
+            $resource->status = "pending";
 
             if ($request->hasFile('file')) {
                 $image = $request->file('file');
