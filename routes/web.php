@@ -43,6 +43,10 @@ Route::middleware('custom')->group(function () {
 
         return view("register");
     });
+    Route::get('/user-profile', function () {
+
+        return view("user_profile");
+    });
 
 
     Route::controller(ResourceController::class)->group(function () {
