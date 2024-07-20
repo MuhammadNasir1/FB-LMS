@@ -20,7 +20,7 @@ class AssignmentController extends Controller
             $validateData = $request->validate([
                 'name' => 'required',
                 'file' => 'required',
-                'status' => 'required',
+                'status' => 'nullable',
                 'description' => 'required',
             ]);
 
