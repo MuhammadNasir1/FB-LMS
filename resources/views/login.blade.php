@@ -72,11 +72,11 @@
 
             <!-- image -->
             <div class="  w-1/2  h-full hidden md:flex items-center  ">
-                <div class="h-[98%] w-full bg-primary rounded-2xl flex flex-col justify-center items-center">
+                <div class="h-[98%] w-full bg-primary rounded-2xl flex flex-col justify-center items-center gap-6">
 
                     <img src="{{ asset('images/GSE-logo(white).svg') }}" class="w-[50%] pt-10" alt="">
 
-                    <img src="{{ asset('images/vector1.png') }}" class="w-[70%] object-contain vector-increase-size"
+                    <img src="{{ asset('images/vector3.png') }}" class="w-[70%] object-contain vector-increase-size"
                         alt="Logo">
 
                 </div>
