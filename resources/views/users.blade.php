@@ -28,6 +28,7 @@
                                 <th class="whitespace-nowrap">@lang('lang.Email')</th>
                                 <th class="whitespace-nowrap">@lang('lang.Phone_No')</th>
                                 <th class="whitespace-nowrap">@lang('lang.Role')</th>
+                                <th class="whitespace-nowrap">Login Status</th>
                                 <th class="flex  justify-center">@lang('lang.Action')</th>
                             </tr>
                         </thead>
@@ -50,6 +51,9 @@
                                     <td>{{ $data->email }}</td>
                                     <td>{{ $data->phone_no }}</td>
                                     <td>{{ $data->role }}</td>
+                                    <td> <button
+                                            class="px-2 py-1  bg-green-600 text-white font-bold rounded-lg">{{ $data->verification }}</button>
+                                    </td>
                                     <td>
                                         <div class="flex gap-5 items-center justify-center">
 

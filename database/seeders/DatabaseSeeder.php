@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Assessor',
             'email' => 'assessor@email.com',
             'password' => Hash::make('12345678'),
-            'role' => 'canditate',
+            'role' => 'assessor',
             'verification' => 'approved',
         ]);
     }

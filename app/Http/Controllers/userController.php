@@ -22,7 +22,7 @@ class userController extends Controller
     public function users()
     {
         $courses = Course::all();
-        $users =  User::where('role', 'seller')->orWhere('role', 'manager')->get();
+        $users =  User::where('role', 'canditate')->orWhere('role', 'assessor')->get();
         return view('users', compact('users', 'courses'));
     }
 

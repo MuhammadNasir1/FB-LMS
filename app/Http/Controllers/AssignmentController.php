@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Assignment;
+use App\Models\assignmentReport;
 use App\Models\assignmentReview;
 use Illuminate\Http\Request;
 
@@ -58,7 +59,7 @@ class AssignmentController extends Controller
             ]);
             $assigment = Assignment::find($id);
             $assigment->status = "reviewed";
-            $review = new assignmentReview;
+            $review = new assignmentReport;
 
             return response()->json(['success' => true, 'message' => "Data add successfully"], 201);
         } catch (\Exception $error) {
