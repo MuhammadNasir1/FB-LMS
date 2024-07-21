@@ -10,4 +10,13 @@ class assignmentReport extends Model
     use HasFactory;
 
     protected $table = "assignment_reports";
+    protected $fillable = [
+        'user_id',
+        'assignment_id',
+        'status',
+        'note',
+
+    ];
+
+    protected $timestamp = true;
 }

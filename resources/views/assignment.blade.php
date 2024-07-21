@@ -69,6 +69,7 @@
         <div class="relative p-4 w-full   max-w-2xl max-h-full ">
             <form id="CheckassignmentForm" method="post" enctype="multipart/form-data" url="">
                 @csrf
+                <input type="hidden" id="assignmentId" name="assignment_id">
                 <div class="relative bg-white shadow-dark rounded-lg  dark:bg-gray-700  ">
                     <div class="flex items-center   justify-start  p-5  rounded-t dark:border-gray-600 bg-primary">
                         <h3 class="text-xl font-semibold text-white ">
@@ -286,9 +287,9 @@
 
             $('.reviewBtn').click(function() {
                 var id = $(this).attr('assignmentId');
-                console.log(id);
                 url = '../assignmentReview/' + id;
                 $('#CheckassignmentForm').attr('url', url);
+                $('#assignmentId').val(id)
 
             });
 

@@ -47,20 +47,28 @@ class AssignmentController extends Controller
         }
     }
 
-    public function assignmentReview(Request $request, $id)
+    public function assignmentReview(Request $request, $assignment_id)
     {
         try {
 
+            // return response()->json($request);
             $validateData = $request->validate([
-                'name' => 'required',
-                'file' => 'required',
                 'status' => 'nullable',
                 'note' => 'required',
+                'assignment_id' => 'required',
             ]);
-            $assigment = Assignment::find($id);
+            $assigment = Assignment::find($assignment_id);
             $assigment->status = "reviewed";
-            $review = new assignmentReport;
 
+
+            $reviews = assignmentReport::create([
+                'user_id' => session('user_det')['user_id'],
+                'assignment_id' => $validateData['assignment_id'],
+                'status' => $validateData['status'],
+                'note' => $validateData['note'],
+            ]);
+            $reviews->save();
+            $assigment->update();
             return response()->json(['success' => true, 'message' => "Data add successfully"], 201);
         } catch (\Exception $error) {
             return response()->json(['success' => false, 'message' => $error->getMessage()], 500);

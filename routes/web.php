@@ -66,7 +66,7 @@ Route::middleware('custom')->group(function () {
     Route::controller(AssignmentController::class)->group(function () {
         Route::post('/addAssignment', 'add');
         Route::get('assignment', 'index');
-        Route::post('/assignmentReview', 'assignmentReview');
+        Route::post('/assignmentReview/{assignment_id}', 'assignmentReview');
     });
 
     Route::controller(CourseController::class)->group(function () {
