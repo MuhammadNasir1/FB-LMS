@@ -14,11 +14,11 @@
 
 <body class="bg-white">
     <div class="flex px-10  justify-center h-[100vh] w-full items-center ">
-        <div class="w-[80%] h-[80vh] flex border border-red-100  shadow-dark rounded-2xl px-8 py-6 ">
-            <div class="md:w-1/2 px-8  sm:pl-16  ">
-                {{-- <div>
-                    <img class="mt-5 w-[180px]" src="{{ asset('images/comapnylogo.svg') }}" alt="logo">
-                </div> --}}
+        <div class="w-[80%] h-[80vh] flex border border-red-100  shadow-dark rounded-2xl md:px-8 py-6 ">
+            <div class="md:w-1/2 md:px-8 px-2 mx-auto  sm:pl-16  relative">
+                <div>
+                    <img class="mt-5 md:hidden w-[80%]" src="{{ asset('images/GSE-log(bg).png') }}" alt="logo">
+                </div>
 
                 <h2 class="font-semibold text-2xl mt-16 text-[#000000]">Login to your ePortfolio</h2>
                 <form id="login_data" method="post" class="flex flex-col gap-4 ">
@@ -66,12 +66,18 @@
                         <h2><a href="../" class="text-primary  underline">Forgot Password</a></h2>
                     </div> --}}
                 </form>
+
+                <p class="absolute bottom-0  left-0 text-[12px]">Version 1.0.0</p>
             </div>
 
             <!-- image -->
             <div class="  w-1/2  h-full hidden md:flex items-center  ">
-                <div class="h-[98%] w-full bg-primary rounded-2xl flex justify-center align-items-center">
-                    <img src="{{ asset('images/cube.png') }}" class="w-[70%] object-contain" alt="Logo">
+                <div class="h-[98%] w-full bg-primary rounded-2xl flex flex-col justify-center items-center">
+
+                    <img src="{{ asset('images/GSE-logo(white).svg') }}" class="w-[50%] pt-10" alt="">
+
+                    <img src="{{ asset('images/vector1.png') }}" class="w-[70%] object-contain vector-increase-size"
+                        alt="Logo">
 
                 </div>
             </div>
