@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Assignment;
+use App\Models\assignmentReport;
 use App\Models\Course;
 use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
@@ -213,6 +215,9 @@ class userController extends Controller
     {
         $userDetails =  User::find($user_id);
         $course = Course::find($userDetails->course);
-        return view('user_profile', compact('userDetails', 'course'));
+        $totalAssignments = Assignment::where('user_id', $user_id)->count();
+        $assessments = assignmentReport::where('user_id', $user_id)->where('status', 'approve')->count();
+        $feedbacks = assignmentReport::where('user_id', $user_id)->where('status', 'rejected')->count();
+        return view('user_profile', compact('userDetails', 'course', 'totalAssignments', 'assessments', 'feedbacks'));
     }
 }

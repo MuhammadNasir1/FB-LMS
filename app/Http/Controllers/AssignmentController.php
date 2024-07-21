@@ -62,7 +62,8 @@ class AssignmentController extends Controller
 
 
             $reviews = assignmentReport::create([
-                'user_id' => session('user_det')['user_id'],
+                'checker_user_id' => session('user_det')['user_id'],
+                'user_id' => $assigment->user_id,
                 'assignment_id' => $validateData['assignment_id'],
                 'status' => $validateData['status'],
                 'note' => $validateData['note'],

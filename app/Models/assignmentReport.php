@@ -11,6 +11,7 @@ class assignmentReport extends Model
 
     protected $table = "assignment_reports";
     protected $fillable = [
+        'checker_user_id',
         'user_id',
         'assignment_id',
         'status',

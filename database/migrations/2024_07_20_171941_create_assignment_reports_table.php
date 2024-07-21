@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('assignment_reports', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
+            $table->string('checker_user_id');
             $table->string('assignment_id');
             $table->string('status');
             $table->text('note');
