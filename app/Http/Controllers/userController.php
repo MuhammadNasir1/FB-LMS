@@ -207,4 +207,12 @@ class userController extends Controller
             return redirect('../users');
         }
     }
+
+    // get user assignment data from assignment and assignmen review
+    public function userAssignmentData($user_id)
+    {
+        $userDetails =  User::find($user_id);
+        $course = Course::find($userDetails->course);
+        return view('user_profile', compact('userDetails', 'course'));
+    }
 }

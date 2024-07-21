@@ -16,11 +16,9 @@ return new class extends Migration
             $table->text('address')->nullable();
             $table->text('user_image')->nullable();
             $table->string('verification')->default("pending");
-            $table->string('tax_number')->nullable();
             $table->string('client_type')->nullable();
-            $table->string('postal_code')->nullable();
             $table->string('city')->nullable();
-            $table->text('note')->nullable();
+            $table->string('course')->nullable();
         });
     }
 

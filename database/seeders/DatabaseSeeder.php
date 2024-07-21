@@ -34,13 +34,20 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('12345678'),
             'role' => 'canditate',
             'verification' => 'approved',
+            'course' => '1',
         ]);
         DB::table('users')->insert([
             'name' => 'Assessor',
             'email' => 'assessor@email.com',
             'password' => Hash::make('12345678'),
+
             'role' => 'assessor',
             'verification' => 'approved',
+        ]);
+        DB::table('courses')->insert([
+            'name' => 'Course-1',
+            'total_assignments' => '10',
+            'description' => 'testing course',
         ]);
     }
 }

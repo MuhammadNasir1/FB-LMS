@@ -15,15 +15,16 @@
                             <img src="{{ asset('images/icons/user.svg') }}" class="h-[50%] w-[50%]  rounded-full"
                                 alt="">
                         </div>
-                        <h2 class="text-center text-2xl font-bold">Aleena</h2>
-                        <p class="text-center">Learners</p>
+                        <h2 class="text-center text-2xl font-bold">{{ $userDetails->name }}</h2>
+                        <p class="text-center">{{ $userDetails->role }}</p>
                     </div>
 
                     <div class="mt-5">
-                        <div><i class="fa-solid fa-phone text-primary"></i> <span class="ms-1">+92 303 565 565 4</span>
+                        <div><i class="fa-solid fa-phone text-primary"></i> <span
+                                class="ms-1">{{ $userDetails->phone }}</span>
                         </div>
                         <div class="mt-2"><i class="fa-regular fa-envelope text-primary "></i>
-                            <span class="ms-1">aleena@gmail.com</span>
+                            <span class="ms-1">{{ $userDetails->email }}</span>
                         </div>
                         <div class="mt-5">
                             <div class="flex justify-between mb-1">
@@ -53,7 +54,8 @@
                             <div class="flex items-center">
                                 <div class=" w-full py-8 px-6">
                                     <div class="flex justify-between  mb-2">
-                                        <span class="text-base font-medium text-primary dark:text-white">Course Name</span>
+                                        <span
+                                            class="text-base font-medium text-primary dark:text-white">{{ $course->name }}</span>
                                         <span class="text-sm font-medium text-primary dark:text-white">45%</span>
                                     </div>
                                     <div class="w-full bg-white rounded-full h-3 dark:bg-gray-700">
@@ -71,7 +73,7 @@
                                 </div>
                                 <div class="px-5">
                                     <h2 class="text-2xl">0</h2>
-                                    <p class="text-lg">Submissions</p>
+                                    <p class="text-lg">Feedbacks</p>
                                 </div>
                             </div>
                             <div class="bg-gray h-[100px] rounded-lg flex items-center px-5 ">

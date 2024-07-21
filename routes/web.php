@@ -47,6 +47,7 @@ Route::middleware('custom')->group(function () {
 
         return view("user_profile");
     });
+    Route::get('/user-profile/{user_id}', [userController::class, 'userAssignmentData']);
 
 
     Route::controller(ResourceController::class)->group(function () {

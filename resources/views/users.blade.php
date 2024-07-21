@@ -79,6 +79,11 @@
                                                         alt="delete" class="cursor-pointer">
                                                 </button>
                                             </a>
+                                            <a href="../user-profile/{{ $data->id }}">
+                                                <button class="bg-primary text-white font-bold px-4 py-2 rounded-lg">
+                                                    Check Profile
+                                                </button>
+                                            </a>
 
                                         </div>
                                     </td>

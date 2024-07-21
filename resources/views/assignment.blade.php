@@ -39,16 +39,18 @@
                                     <td><a href="{{ $assigment->file }}" target="_blank"
                                             class="text-blue-500 underline ">Open File</a></td>
                                     <td><button
-                                            class="px-3 py-1 bg-red-500 rounded-lg text-white font-bold">{{ $assigment->status }}</button>
+                                            class="px-3 py-1 {{ $assigment->status == 'pending' ? 'bg-red-500' : 'bg-green-500' }}  rounded-lg text-white font-bold">{{ $assigment->status }}</button>
                                     </td>
                                     <td class="max-w-56">{{ $assigment->description }}</td>
                                     <td>
-                                        <div class="flex justify-center" data-modal-target="checkAssignmentmodal"
-                                            data-modal-toggle="checkAssignmentmodal">
-                                            <button assignmentId="{{ $assigment->id }}"
-                                                class="bg-blue-900 text-white font-bold  py-3 px-4 rounded-lg reviewBtn ">Review
-                                                Assignment</button>
-                                        </div>
+                                        @if ($assigment->status == 'pending')
+                                            <div class="flex justify-center" data-modal-target="checkAssignmentmodal"
+                                                data-modal-toggle="checkAssignmentmodal">
+                                                <button assignmentId="{{ $assigment->id }}"
+                                                    class="bg-blue-900 text-white font-bold  py-3 px-4 rounded-lg reviewBtn ">Review
+                                                    Assignment</button>
+                                            </div>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
