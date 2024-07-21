@@ -10,11 +10,19 @@
     <link rel="shortcut icon" href="{{ asset('images/favicon(32X32).png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        @media screen and (max-width: 768px) {
+            .shadow-dark {
+                box-shadow: none;
+            }
+        }
+    </style>
+
 </head>
 
 <body class="bg-white">
     <div class="flex px-10  justify-center h-[100vh] w-full items-center ">
-        <div class="w-[80%] h-[80vh] flex border border-red-100  shadow-dark rounded-2xl md:px-8 py-6 ">
+        <div class=" md:w-[80%] md:h-[80vh] flex   shadow-dark rounded-2xl md:px-8 py-6 ">
             <div class="md:w-1/2 md:px-8 px-2 mx-auto  sm:pl-16  relative">
                 <div>
                     <img class="mt-5 md:hidden w-[80%]" src="{{ asset('images/GSE-log(bg).png') }}" alt="logo">
@@ -67,7 +75,7 @@
                     </div> --}}
                 </form>
 
-                <p class="absolute bottom-0  left-0 text-[12px]">Version 1.0.0</p>
+                <p class="absolute bottom-0  left-0 text-[12px] md:block hidden">Version 1.0.0</p>
             </div>
 
             <!-- image -->

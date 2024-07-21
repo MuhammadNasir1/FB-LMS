@@ -11,7 +11,16 @@ class AssignmentController extends Controller
 {
     public function index()
     {
-        $assigments = Assignment::all();
+
+        $userRole = session('user_det')['role'];
+        $user_id = session('user_det')['user_id'];
+        if ($userRole == "canditate") {
+
+            $assigments = Assignment::where('user_id',  $user_id)->get();
+        } else {
+
+            $assigments = Assignment::all();
+        }
         return  view('assignment', compact('assigments'));
     }
 

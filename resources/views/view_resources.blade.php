@@ -8,10 +8,12 @@
     <div class="p-10">
         <div class="flex justify-between gap-5">
             <div class="w-[200px] pt-3">
-                <select name="course" id="course" class="rounded-[5px] w-[100px] bg-gray border-0 ps-8 focus:border-0">
-                    <option value="Bacholer"> Bacholer</option>
-                    <option value="Masters">Masters</option>
-                </select>
+                @if (session('user_det')['role'] !== 'canditate')
+                    <select name="course" id="course" class="rounded-[5px] w-[100px] bg-gray border-0 ps-8 focus:border-0">
+                        <option value="Bacholer"> Bacholer</option>
+                        <option value="Masters">Masters</option>
+                    </select>
+                @endif
             </div>
             <div>
                 <form action="#" method="get" class="pt-3 relative">

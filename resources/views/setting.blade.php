@@ -93,7 +93,7 @@
                         </div>
                     </div>
                     <div class="mt-10  flex justify-end">
-                        <button class="bg-secondary  text-white h-12 px-3 rounded-[6px]  shadow-sm font-semibold "
+                        <button class="bg-primary  text-white h-12 px-3 rounded-[6px]  shadow-sm font-semibold "
                             id="addBtn">
                             <div class=" text-center hidden" id="spinner">
                                 <svg aria-hidden="true"

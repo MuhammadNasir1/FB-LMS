@@ -38,8 +38,8 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>
                                         <div class="rounded-full flex justify-content-center ">
-                                            <img src="{{ isset($data->user_image) ? asset($data->user_image) : asset('images/comapnylogo.svg') }}"
-                                                class="object-contain rounded-full h-[80px] w-[80px] bg-slate-400"
+                                            <img src="{{ isset($data->user_image) ? asset($data->user_image) : asset('images/favicon.png') }}"
+                                                class="object-contain rounded-full h-[80px] min-w-[80px] max-w-[80] bg-slate-400"
                                                 width="80">
                                         </div>
 
@@ -79,11 +79,14 @@
                                                         alt="delete" class="cursor-pointer">
                                                 </button>
                                             </a>
-                                            <a href="../user-profile/{{ $data->id }}">
-                                                <button class="bg-primary text-white font-bold px-4 py-2 rounded-lg">
-                                                    Check Profile
-                                                </button>
-                                            </a>
+                                            @if ($data->role == 'canditate')
+                                                <a href="../user-profile/{{ $data->id }}">
+                                                    <button
+                                                        class="bg-primary text-white font-bold px-4 py-2 rounded-lg text-nowrap">
+                                                        Check Profile
+                                                    </button>
+                                                </a>
+                                            @endif
 
                                         </div>
                                     </td>

@@ -8,7 +8,6 @@ use App\Http\Controllers\userController;
 use Illuminate\Support\Facades\Route;
 
 // language route
-Route::get('/lang', [userController::class, 'language_change']);
 // Authentication
 Route::post('login', [authController::class, 'login']);
 Route::post('registerdata', [authController::class, 'register']);
@@ -23,17 +22,14 @@ Route::get('/notifications', function () {
 });
 
 Route::middleware('custom')->group(function () {
+
     Route::get('/setting', [authController::class, 'settingdata']);
     Route::post('updateSettings', [authController::class, 'updateSet']);
-    Route::get('/', [userController::class, 'Dashboard']);
+    // Route::get('/', [userController::class, 'Dashboard']);
     Route::get('help', function () {
         return view('help');
     });
 
-    Route::get('/users', [userController::class, 'users']);
-    Route::get('/deleteUser/{id}', [userController::class, 'deleteUser'])->name("deleteUser");
-    Route::get('/update-user/{id}', [userController::class, 'updateUser'])->name("updateUser");
-    Route::post('/updateUserCar/{id}', [userController::class, 'updateUserCar']);
 
     Route::get('email', function () {
 
@@ -69,9 +65,17 @@ Route::middleware('custom')->group(function () {
         Route::get('assignment', 'index');
         Route::post('/assignmentReview/{assignment_id}', 'assignmentReview');
     });
+    Route::get('/', [userController::class, 'Dashboard']);
 
-    Route::controller(CourseController::class)->group(function () {
-        Route::get('/course', 'index');
-        Route::post('/addCourse', 'insert');
+    Route::middleware('Admin')->group(function () {
+        Route::controller(CourseController::class)->group(function () {
+            Route::get('/course', 'index');
+            Route::post('/addCourse', 'insert');
+        });
+        Route::get('/users', [userController::class, 'users']);
+        Route::get('/deleteUser/{id}', [userController::class, 'deleteUser'])->name("deleteUser");
+        Route::get('/update-user/{id}', [userController::class, 'updateUser'])->name("updateUser");
+        Route::post('/updateUserCar/{id}', [userController::class, 'updateUserCar']);
+        // Route::get('/', [userController::class, 'Dashboard']);
     });
 });

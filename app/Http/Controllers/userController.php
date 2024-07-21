@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
 use  Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use PhpParser\Node\Expr\AssignRef;
 
 class userController extends Controller
 {
@@ -136,7 +137,13 @@ class userController extends Controller
 
     public function Dashboard()
     {
-        return view('dashboard');
+
+        $total_submission =   Assignment::all()->count();
+        $today_submission =   Assignment::all()->count();
+        $assessments = assignmentReport::where('status', 'approve')->count();
+        $feedbacks = assignmentReport::where('status', 'rejected')->count();
+        $today_user =   User::where('role', 'canditate')->orwhere('role', 'assessor')->count();
+        return view('dashboard', compact('total_submission', 'today_submission', 'today_user', 'assessments', 'feedbacks'));
     }
 
     public function changeVerifictionStatus(Request $request, $user_id)
