@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Software') - LMS</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" type="text/css" href="{{ asset('DataTables/DataTables-1.13.8/css/jquery.dataTables.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -43,7 +44,8 @@
             class="fixed  bg-primary text-white top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
             aria-label="Sidebar">
             <div class="flex  justify-center mt-[30px] pr-4 mb-3">
-                <a href="../"> <img class=" w-48" src="{{ asset('images/comapnylogo.svg') }}" alt="Horeca"></a>
+                <a href="../"> <img class=" w-48" src="{{ asset('images/GSE-log(bg).png') }}" alt="GSE"></a>
+                {{-- <a href="../"> <img class=" w-48" src="{{ asset('images/comapnylogo.svg') }}" alt="Horeca"></a> --}}
             </div>
             <div class="h-full  py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
                 <ul class="space-y-2  pl-3 pr-6 font-medium">
