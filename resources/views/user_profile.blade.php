@@ -75,7 +75,7 @@
                                 <div class="bg-white  border border-secondary rounded-[10px] py-5 px-8">
                                     <div class="flex gap-1 justify-between items-center">
                                         <div>
-                                            <p class="text-sm text-[#808191]">FeedBacks</p>
+                                            <p class="text-sm text-[#808191]">Feedbacks</p>
                                             <h2 class="text-2xl font-semibold mt-1">{{ $feedbacks }}</h2>
                                         </div>
                                         <div
@@ -111,7 +111,7 @@
                                 <div class="bg-white  border border-secondary rounded-[10px] py-5 px-8">
                                     <div class="flex gap-1 justify-between items-center">
                                         <div>
-                                            <p class="text-sm text-[#808191]">SUbimssions</p>
+                                            <p class="text-sm text-[#808191]">Subimssions</p>
                                             <h2 class="text-2xl font-semibold mt-1">{{ $totalAssignments }}</h2>
                                         </div>
                                         <div

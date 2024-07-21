@@ -15,7 +15,7 @@
                     <a href="../assignment">
                         <div class="flex gap-1 justify-between items-center">
                             <div>
-                                <p class="text-sm text-[#808191]">SUbimssions</p>
+                                <p class="text-sm text-[#808191]">Subimssions</p>
                                 <h2 class="text-2xl font-semibold mt-1">{{ $total_submission }}</h2>
                             </div>
                             <div class="h-[80px] w-[80px] rounded-full bg-primary flex justify-center items-center">
@@ -34,7 +34,7 @@
                     <a href="#">
                         <div class="flex gap-1 justify-between items-center">
                             <div>
-                                <p class="text-sm text-[#808191]">Today Submission </p>
+                                <p class="text-sm text-[#808191]">Today's Submission </p>
                                 <h2 class="text-2xl font-semibold mt-1">{{ $total_submission }}</h2>
                             </div>
                             <div class="h-[80px] w-[80px] rounded-full bg-primary flex justify-center items-center">
@@ -50,7 +50,7 @@
                 <div class="bg-white  border border-secondary rounded-[10px] py-5 px-8">
                     <div class="flex gap-1 justify-between items-center">
                         <div>
-                            <p class="text-sm text-[#808191]">FeedBacks</p>
+                            <p class="text-sm text-[#808191]">Feedbacks</p>
                             <h2 class="text-2xl font-semibold mt-1">{{ $feedbacks }}</h2>
                         </div>
                         <div class=" h-[80px] w-[80px] rounded-full bg-primary flex justify-center items-center">
@@ -85,7 +85,7 @@
                 <div class="bg-white  border border-secondary rounded-[10px] py-5 px-8">
                     <div class="flex gap-1 justify-between items-center">
                         <div>
-                            <p class="text-sm text-[#808191]">Total Users</p>
+                            <p class="text-sm text-[#808191]">Candidates Enrolled</p>
                             <h2 class="text-2xl font-semibold mt-1">{{ $today_user }}</h2>
                         </div>
                         <div class=" h-[80px] w-[80px] rounded-full bg-primary flex justify-center items-center">
