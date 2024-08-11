@@ -98,10 +98,9 @@
                             </a>
                         </li>
                     @endif
-
                     @if (session('user_det')['role'] == 'canditate')
                         <li>
-                            <a href="../resources"
+                            <a href="../user-profile/{{ session('user_det')['user_id'] }}"
                                 class=" flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                                 <svg class="w-5 h-5 text-white " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                     width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -111,7 +110,7 @@
                                 </svg>
 
 
-                                <span class="ms-3">Resources</span>
+                                <span class="ms-3">Assignment Report</span>
                             </a>
                         </li>
                     @endif
@@ -187,7 +186,23 @@
                             <span class="ms-3">Add Assignment</span>
                         </a>
                     </li>
+                    @if (session('user_det')['role'] == 'canditate')
+                        <li>
+                            <a href="../resources"
+                                class=" flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                                <svg class="w-5 h-5 text-white " aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                    viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-3 5h3m-6 0h.01M12 16h3m-6 0h.01M10 3v4h4V3h-4Z" />
+                                </svg>
 
+
+                                <span class="ms-3">Resources</span>
+                            </a>
+                        </li>
+                    @endif
 
                     <li>
                         <a href="../help"
